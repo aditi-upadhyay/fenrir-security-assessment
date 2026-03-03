@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import backgroundImage from '../assets/background.png';
+import { useNavigate } from 'react-router-dom';
 
 const Login: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 
+    const handleCreateAccount = () => {
+        console.log("Create account");
+        navigate('/home');
+    }
     return (
         <div
             className="min-h-screen bg-[#0a0f12] text-white font-sans relative overflow-hidden flex items-center justify-center p-4 md:p-8 bg-cover bg-center bg-no-repeat"
@@ -107,7 +113,7 @@ const Login: React.FC = () => {
                                 </label>
                             </div>
 
-                            <button className="w-full bg-[#00d2b4] hover:bg-[#00b99e] text-white font-bold py-4 rounded-full transition-colors shadow-lg">
+                            <button className="w-full bg-[#00d2b4] hover:bg-[#00b99e] text-white font-bold py-4 rounded-full transition-colors shadow-lg" onClick={handleCreateAccount}>
                                 Create account
                             </button>
 
