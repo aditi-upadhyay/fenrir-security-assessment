@@ -1,8 +1,10 @@
-import React from 'react';
 import { Home } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
+import { useToast } from '../context/ToastContext';
 
 const Navbar: React.FC = () => {
+    const { showToast } = useToast();
+
     return (
         <nav className="flex flex-wrap items-center justify-between px-4 sm:px-6 lg:px-8 py-3 lg:py-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 shrink-0 gap-3 transition-colors duration-300">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0">
@@ -18,10 +20,16 @@ const Navbar: React.FC = () => {
 
             <div className="flex items-center gap-2 sm:gap-4">
                 <ThemeToggle />
-                <button className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm whitespace-nowrap">
+                <button
+                    onClick={() => showToast('Exporting report... please wait.', 'info')}
+                    className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-gray-600 dark:text-gray-400 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors shadow-sm whitespace-nowrap"
+                >
                     Export Report
                 </button>
-                <button className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-red-500 bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-md hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors shadow-sm whitespace-nowrap">
+                <button
+                    onClick={() => showToast('Scan stopped successfully.', 'success')}
+                    className="px-3 sm:px-6 py-2 text-xs sm:text-sm font-semibold text-red-500 bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-md hover:bg-red-100 dark:hover:bg-red-900/50 transition-colors shadow-sm whitespace-nowrap"
+                >
                     Stop Scan
                 </button>
             </div>
