@@ -1,73 +1,116 @@
-# React + TypeScript + Vite
+# Frontend Design Challenge – Fenrir Security
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This project is a fully interactive React application built as part of the Frontend Developer technical assessment.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The objective was to recreate three product screens based strictly on the provided design reference and implement a responsive, production-ready interface from scratch.
 
-## React Compiler
+The focus of this implementation was:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Clean and scalable component architecture
+* Pixel-accurate UI recreation
+* Responsiveness across all screen sizes
+* Maintainable and well-structured code
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tech Stack
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+* React (TypeScript)
+* Vite
+* Tailwind CSS
+* Lucide React (for icons)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Features
+
+* Recreated three product screens based on the provided design reference
+* Fully responsive layout (mobile, tablet, desktop)
+* Reusable and modular component structure
+* Interactive sidebar navigation
+* Animated toast notification system
+* SVG-based circular progress indicator
+* Clean and structured state management using React hooks
+
+---
+
+## Project Structure
+
+```
+src
+├── components      // Reusable UI components (Sidebar, Cards, Toast, etc.)
+├── pages           // Individual screen implementations
+├── constants       // Static configuration (e.g., sidebar items)
+├── context         // Global state management (Toast Provider)
+└── main.tsx        // Application entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The structure ensures separation of concerns and scalability for future enhancements.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Responsive Behavior
+
+* **Desktop:** Fixed sidebar with structured content layout
+* **Tablet:** Adaptive grid and flexible spacing
+* **Mobile:** Collapsible sidebar with smooth slide-in animation and overlay
+
+Flexbox and Grid were used to maintain consistent spacing and alignment across breakpoints.
+
+---
+
+## Component Architecture
+
+The UI was broken down into reusable components such as:
+
+* Sidebar
+* SidebarItem
+* MetricCard
+* ProgressIndicator
+* Toast & ToastContainer
+
+This approach improves maintainability and avoids repetition.
+
+---
+
+## Animations & UX Enhancements
+
+* Smooth sidebar slide-in animation on mobile
+* Toast notification entry animation with auto-dismiss
+* Subtle hover states on interactive elements
+* Clean transitions for layout adjustments
+
+Animations were kept minimal and professional to enhance usability.
+
+---
+
+## Running the Project Locally
+
+Install dependencies:
+
 ```
+npm install
+```
+
+Start development server:
+
+```
+npm run dev
+```
+
+The application will run at:
+
+```
+http://localhost:5173
+```
+
+---
+
+## Deployment
+
+The live deployed URL - https://frerir-aditi-upadhyay.netlify.app and GitHub repository link - https://github.com/aditi-upadhyay/fenrir-security-assessment.git 
+
+---
+
