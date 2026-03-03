@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ScanTable from './Table';
 import StatsOverview from './StatsOverview';
 
 const Dashboard: React.FC = () => {
+    const [searchQuery, setSearchQuery] = useState('');
+
     return (
         <div className="h-full flex flex-col gap-8">
             <StatsOverview />
@@ -19,7 +21,9 @@ const Dashboard: React.FC = () => {
                         <input
                             type="text"
                             placeholder="Search scans by name or type..."
-                            className="w-full pl-11 pr-4 py-2 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a99d]/20 focus:border-[#00a99d] transition-all text-sm text-gray-700 dark:text-gray-200 shadow-sm"
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-11 pr-4 py-2 bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-md focus:outline-none focus:ring-2 focus:ring-[#00a99d]/20 focus:border-[#00a99d] transition-all text-sm text-gray-700 dark:text-gray-200 shadow-sm"
                         />
                     </div>
 
@@ -46,7 +50,7 @@ const Dashboard: React.FC = () => {
                 {/* Table Section */}
                 <div className="flex-1 overflow-hidden flex flex-col">
                     <div className="flex-1 overflow-y-auto min-h-0">
-                        <ScanTable />
+                        <ScanTable searchQuery={searchQuery} />
                     </div>
                 </div>
             </div>

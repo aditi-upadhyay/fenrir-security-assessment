@@ -70,7 +70,12 @@ const VulnerabilityBadges: React.FC<{ vulnerability: Scan['vulnerability'] }> = 
     );
 };
 
-const Table: React.FC = () => {
+const Table: React.FC<{ searchQuery: string }> = ({ searchQuery }) => {
+    const filteredScans = scans.filter((scan) =>
+        scan.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        scan.type.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
     return (
         <div className="w-full overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[1000px]">
@@ -85,36 +90,44 @@ const Table: React.FC = () => {
                     </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
-                    {scans.map((scan) => (
-                        <tr key={scan.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors group">
-                            <td className="py-5 pl-2">
-                                <span className="text-sm font-bold text-gray-700 dark:text-gray-200">{scan.name}</span>
-                            </td>
-                            <td className="py-5">
-                                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{scan.type}</span>
-                            </td>
-                            <td className="py-5">
-                                <StatusBadge status={scan.status} />
-                            </td>
-                            <td className="py-5">
-                                <div className="flex items-center gap-3">
-                                    <div className="w-32 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
-                                        <div
-                                            className={`h-full rounded-full ${scan.status === 'Failed' ? 'bg-red-400' : 'bg-[#00a99d]'}`}
-                                            style={{ width: `${scan.progress}%` }}
-                                        ></div>
+                    {filteredScans.length > 0 ? (
+                        filteredScans.map((scan) => (
+                            <tr key={scan.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors group">
+                                <td className="py-5 pl-2">
+                                    <span className="text-sm font-bold text-gray-700 dark:text-gray-200">{scan.name}</span>
+                                </td>
+                                <td className="py-5">
+                                    <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{scan.type}</span>
+                                </td>
+                                <td className="py-5">
+                                    <StatusBadge status={scan.status} />
+                                </td>
+                                <td className="py-5">
+                                    <div className="flex items-center gap-3">
+                                        <div className="w-32 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
+                                            <div
+                                                className={`h-full rounded-full ${scan.status === 'Failed' ? 'bg-red-400' : 'bg-[#00a99d]'}`}
+                                                style={{ width: `${scan.progress}%` }}
+                                            ></div>
+                                        </div>
+                                        <span className="text-xs font-bold text-gray-600 dark:text-gray-400">{scan.progress}%</span>
                                     </div>
-                                    <span className="text-xs font-bold text-gray-600 dark:text-gray-400">{scan.progress}%</span>
-                                </div>
-                            </td>
-                            <td className="py-5">
-                                <VulnerabilityBadges vulnerability={scan.vulnerability} />
-                            </td>
-                            <td className="py-5 text-right pr-2">
-                                <span className="text-xs font-medium text-gray-400 dark:text-gray-500">{scan.lastScan}</span>
+                                </td>
+                                <td className="py-5">
+                                    <VulnerabilityBadges vulnerability={scan.vulnerability} />
+                                </td>
+                                <td className="py-5 text-right pr-2">
+                                    <span className="text-xs font-medium text-gray-400 dark:text-gray-500">{scan.lastScan}</span>
+                                </td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan={6} className="py-10 text-center text-gray-500 dark:text-gray-400 text-sm">
+                                No scans found matching "{searchQuery}"
                             </td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>
