@@ -1,5 +1,5 @@
 import React from 'react';
-import { RotateCcw, Ban, AlertTriangle, Search, TrendingUp, TrendingDown } from 'lucide-react';
+import { RotateCcw, Ban, AlertTriangle, Search, ArrowUp, ArrowDown } from 'lucide-react';
 
 interface SeverityCardProps {
     label: string;
@@ -9,6 +9,7 @@ interface SeverityCardProps {
     icon: React.ReactNode;
     iconBgColor: string;
     trendColor: string;
+    isFirst?: boolean;
 }
 
 const SeverityCard: React.FC<SeverityCardProps> = ({
@@ -18,20 +19,20 @@ const SeverityCard: React.FC<SeverityCardProps> = ({
     trendType,
     icon,
     iconBgColor,
-    trendColor,
+    trendColor
 }) => {
     return (
-        <div className="bg-white p-6 flex-1  flex flex-col gap-4">
-            <div className="flex justify-between items-start">
+        <div className={`bg-white px-5 py-4 flex flex-col gap-3`}>
+            <div className="flex justify-between items-center">
                 <span className="text-gray-400 text-sm font-medium">{label}</span>
                 <div className={`p-2 rounded-xl ${iconBgColor}`}>
                     {icon}
                 </div>
             </div>
-            <div className="flex flex-col gap-1">
-                <span className="text-3xl font-bold text-gray-800">{count}</span>
-                <div className={`flex items-center gap-1 text-[10px] font-bold ${trendColor}`}>
-                    {trendType === 'up' ? <TrendingUp size={12} /> : <TrendingDown size={12} />}
+            <div className="flex flex-row items-baseline gap-2 mt-1">
+                <span className="text-4xl font-bold text-gray-800 leading-none tracking-tight">{count}</span>
+                <div className={`flex items-center gap-1 text-[11px] font-bold ${trendColor}`}>
+                    {trendType === 'up' ? <ArrowUp size={12} strokeWidth={3} /> : <ArrowDown size={12} strokeWidth={3} />}
                     <span>{trend}</span>
                 </div>
             </div>
@@ -73,22 +74,23 @@ const StatsOverview: React.FC = () => {
             </div>
 
             {/* Severity Cards */}
-            <div className="flex flex-col lg:flex-row gap-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 bg-white border-b border-gray-100">
                 <SeverityCard
                     label="Critical Severity"
                     count={86}
                     trend="+2% increase than yesterday"
                     trendType="up"
-                    trendColor="text-pink-500"
+                    trendColor="text-rose-600"
                     iconBgColor="bg-pink-100/50"
                     icon={<Ban className="text-pink-500" size={20} />}
+                    isFirst={true}
                 />
                 <SeverityCard
                     label="High Severity"
                     count={16}
                     trend="+0.9% increase than yesterday"
                     trendType="up"
-                    trendColor="text-pink-500"
+                    trendColor="text-rose-600"
                     iconBgColor="bg-orange-100/50"
                     icon={<AlertTriangle className="text-orange-500" size={20} />}
                 />
@@ -106,7 +108,7 @@ const StatsOverview: React.FC = () => {
                     count={16}
                     trend="+0.9% increase than yesterday"
                     trendType="up"
-                    trendColor="text-pink-500"
+                    trendColor="text-rose-600"
                     iconBgColor="bg-blue-100/50"
                     icon={<Search className="text-blue-500" size={20} />}
                 />

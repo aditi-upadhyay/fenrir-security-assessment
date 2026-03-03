@@ -100,7 +100,7 @@ const Table: React.FC = () => {
                                 <div className="flex items-center gap-3">
                                     <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
                                         <div
-                                            className={`h-full rounded-full ${scan.status === 'Failed' ? 'bg-red-400' : 'bg-[#00d2b4]'}`}
+                                            className={`h-full rounded-full ${scan.status === 'Failed' ? 'bg-red-400' : 'bg-[#00a99d]'}`}
                                             style={{ width: `${scan.progress}%` }}
                                         ></div>
                                     </div>
