@@ -23,32 +23,12 @@ const ScanProgressCard: React.FC = () => {
         <div className="bg-white rounded-md p-4 shadow-sm border border-gray-50">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 {/* Progress Circle - Centered on mobile */}
-                <div className="relative w-40 h-40 flex items-center justify-center shrink-0 mx-auto lg:mx-0">
-                    <svg className="w-full h-full transform -rotate-90">
-                        <circle
-                            cx="80"
-                            cy="80"
-                            r="70"
-                            stroke="currentColor"
-                            strokeWidth="12"
-                            fill="transparent"
-                            className="text-gray-100"
-                        />
-                        <circle
-                            cx="80"
-                            cy="80"
-                            r="70"
-                            stroke="currentColor"
-                            strokeWidth="12"
-                            fill="transparent"
-                            strokeDasharray={440}
-                            strokeDashoffset={440}
-                            className="text-[#00d2b4]"
-                        />                
-                    </svg>
-                    <div className="absolute flex flex-col items-center">
-                        <span className="text-3xl font-bold text-gray-800">0%</span>
-                        <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest">In Progress</span>
+                <div className="circle pr-4 border-r border-gray-200">
+                    <div className="w-32 h-32 bg-black rounded-full flex items-center justify-center text-white flex-col">
+                        <span className="text-2xl">0%</span>
+                        <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest">
+                            In Progress
+                        </span>
                     </div>
                 </div>
 
