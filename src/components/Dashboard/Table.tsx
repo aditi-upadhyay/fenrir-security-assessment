@@ -31,9 +31,9 @@ const scans: Scan[] = [
 
 const StatusBadge: React.FC<{ status: Scan['status'] }> = ({ status }) => {
     const styles = {
-        Completed: 'bg-green-50 text-green-600 border-green-100',
-        Scheduled: 'bg-blue-50 text-blue-600 border-blue-100',
-        Failed: 'bg-red-50 text-red-600 border-red-100',
+        Completed: 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-100 dark:border-green-800/50',
+        Scheduled: 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-100 dark:border-blue-800/50',
+        Failed: 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 border-red-100 dark:border-red-800/50',
     };
 
     return (
@@ -75,43 +75,43 @@ const Table: React.FC = () => {
         <div className="w-full overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[1000px]">
                 <thead>
-                    <tr className="border-b border-gray-100">
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider pl-2">Scan Name</th>
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider pr-12">Type</th>
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider pr-12">Status</th>
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider pr-12">Progress</th>
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider pr-12">Vulnerability</th>
-                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 uppercase tracking-wider text-right pr-2">Last Scan</th>
+                    <tr className="border-b border-gray-100 dark:border-gray-800 transition-colors duration-300">
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider pl-2">Scan Name</th>
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider pr-12">Type</th>
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider pr-12">Status</th>
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider pr-12">Progress</th>
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider pr-12">Vulnerability</th>
+                        <th className="pb-4 pt-2 text-xs font-medium text-gray-400 dark:text-gray-500 uppercase tracking-wider text-right pr-2">Last Scan</th>
                     </tr>
                 </thead>
-                <tbody className="divide-y divide-gray-50">
+                <tbody className="divide-y divide-gray-50 dark:divide-gray-800">
                     {scans.map((scan) => (
-                        <tr key={scan.id} className="hover:bg-gray-50/50 transition-colors group">
+                        <tr key={scan.id} className="hover:bg-gray-50/50 dark:hover:bg-gray-800/50 transition-colors group">
                             <td className="py-5 pl-2">
-                                <span className="text-sm font-bold text-gray-700">{scan.name}</span>
+                                <span className="text-sm font-bold text-gray-700 dark:text-gray-200">{scan.name}</span>
                             </td>
                             <td className="py-5">
-                                <span className="text-sm font-medium text-gray-500">{scan.type}</span>
+                                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{scan.type}</span>
                             </td>
                             <td className="py-5">
                                 <StatusBadge status={scan.status} />
                             </td>
                             <td className="py-5">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-32 h-2 bg-gray-100 rounded-full overflow-hidden">
+                                    <div className="w-32 h-2 bg-gray-100 dark:bg-gray-800 rounded-full overflow-hidden">
                                         <div
                                             className={`h-full rounded-full ${scan.status === 'Failed' ? 'bg-red-400' : 'bg-[#00a99d]'}`}
                                             style={{ width: `${scan.progress}%` }}
                                         ></div>
                                     </div>
-                                    <span className="text-xs font-bold text-gray-600">{scan.progress}%</span>
+                                    <span className="text-xs font-bold text-gray-600 dark:text-gray-400">{scan.progress}%</span>
                                 </div>
                             </td>
                             <td className="py-5">
                                 <VulnerabilityBadges vulnerability={scan.vulnerability} />
                             </td>
                             <td className="py-5 text-right pr-2">
-                                <span className="text-xs font-medium text-gray-400">{scan.lastScan}</span>
+                                <span className="text-xs font-medium text-gray-400 dark:text-gray-500">{scan.lastScan}</span>
                             </td>
                         </tr>
                     ))}

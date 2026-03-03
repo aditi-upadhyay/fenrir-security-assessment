@@ -14,16 +14,16 @@ const ActivityLog: React.FC = () => {
     ];
 
     return (
-        <div className="flex-1 min-w-0 font-mono text-[10px] lg:text-sm leading-relaxed text-gray-500 overflow-y-auto pr-2 lg:pr-4 custom-scrollbar">
+        <div className="flex-1 min-w-0 font-mono text-[10px] lg:text-sm leading-relaxed text-gray-500 dark:text-gray-400 overflow-y-auto pr-2 lg:pr-4 custom-scrollbar transition-colors duration-300">
             <div className="space-y-3 lg:space-y-4">
                 {logs.map((log, idx) => (
                     <div key={idx} className={`${log.isIndent ? 'ml-4 lg:ml-8' : ''} break-words`}>
-                        {log.time && <span className="text-gray-300 mr-2 lg:mr-4 text-[10px]">[{log.time}]</span>}
-                        <span className="text-[12px]">{log.text}</span>
-                        {log.code && <span className="bg-gray-100 px-1 lg:px-1.5 py-0.5 rounded text-gray-800 mx-0.5 lg:mx-1 border border-gray-200 text-[12px]">{log.code}</span>}
-                        {log.badge && <span className="bg-gray-800 text-white px-1.5 lg:px-2 py-0.5 rounded-full text-[8px] lg:text-xs mx-0.5 lg:mx-1 inline-block text-[12px]">{log.badge}</span>}
-                        {log.text2 && <span className="text-[12px]">{log.text2}</span>}
-                        {log.text3 && <span className="text-[12px]">{log.text3}</span>}
+                        {log.time && <span className="text-gray-300 dark:text-gray-600 mr-2 lg:mr-4 text-[10px]">[{log.time}]</span>}
+                        <span className="text-[12px] dark:text-gray-300">{log.text}</span>
+                        {log.code && <span className="bg-gray-100 dark:bg-gray-800 px-1 lg:px-1.5 py-0.5 rounded text-gray-800 dark:text-gray-200 mx-0.5 lg:mx-1 border border-gray-200 dark:border-gray-700 text-[12px]">{log.code}</span>}
+                        {log.badge && <span className="bg-gray-800 dark:bg-gray-700 text-white dark:text-gray-200 px-1.5 lg:px-2 py-0.5 rounded-full text-[8px] lg:text-xs mx-0.5 lg:mx-1 inline-block text-[12px]">{log.badge}</span>}
+                        {log.text2 && <span className="text-[12px] dark:text-gray-300">{log.text2}</span>}
+                        {log.text3 && <span className="text-[12px] dark:text-gray-300">{log.text3}</span>}
                         {log.bold && <span className="text-red-500 font-bold mx-0.5 lg:mx-1" dangerouslySetInnerHTML={{ __html: log.bold.replace(/\*\*(.*?)\*\*/g, '$1') }}></span>}
                     </div>
                 ))}

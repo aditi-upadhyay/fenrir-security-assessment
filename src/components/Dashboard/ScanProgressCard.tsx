@@ -20,13 +20,13 @@ const ScanProgressCard: React.FC = () => {
     ];
 
     return (
-        <div className="bg-white rounded-md p-4 shadow-sm border border-gray-50">
+        <div className="bg-white dark:bg-gray-900 rounded-md p-4 shadow-sm border border-gray-50 dark:border-gray-800 transition-colors duration-300">
             <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
                 {/* Progress Circle - Centered on mobile with responsive border */}
-                <div className="flex flex-col items-center justify-center pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-gray-100 pb-6 lg:pb-0 w-full lg:w-auto">
-                    <div className="w-24 h-24 bg-black rounded-full flex items-center justify-center text-white flex-col shrink-0">
-                        <span className="text-xl font-bold">0%</span>
-                        <span className="text-[8px] font-medium text-gray-400 uppercase tracking-widest text-center px-2">
+                <div className="flex flex-col items-center justify-center pr-0 lg:pr-8 border-b lg:border-b-0 lg:border-r border-gray-100 dark:border-gray-800 pb-6 lg:pb-0 w-full lg:w-auto">
+                    <div className="w-24 h-24 bg-black dark:bg-gray-800 rounded-full flex items-center justify-center text-white flex-col shrink-0 border dark:border-gray-700">
+                        <span className="text-xl font-bold dark:text-gray-100">0%</span>
+                        <span className="text-[8px] font-medium text-gray-400 dark:text-gray-500 uppercase tracking-widest text-center px-2">
                             In Progress
                         </span>
                     </div>
@@ -36,17 +36,17 @@ const ScanProgressCard: React.FC = () => {
                     {/* Steps Indicator - Scrollable on mobile */}
                     <div className="overflow-x-auto pb-4 mb-4 no-scrollbar">
                         <div className="flex items-center justify-between relative min-w-[500px] lg:min-w-0 px-2 lg:px-4">
-                            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-100 -translate-y-1/2 z-0" />
+                            <div className="absolute top-1/2 left-0 w-full h-[2px] bg-gray-100 dark:bg-gray-800 -translate-y-1/2 z-0" />
 
                             {steps.map((step, idx) => (
-                                <div key={idx} className="relative z-10 flex flex-col items-center gap-2 bg-white px-2 lg:px-4">
+                                <div key={idx} className="relative z-10 flex flex-col items-center gap-2 bg-white dark:bg-gray-900 px-2 lg:px-4">
                                     <div className={`w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-2 transition-all
                                         ${step.active
                                             ? 'bg-[#00d2b4] border-[#00d2b4] text-white shadow-lg shadow-[#00d2b4]/20'
-                                            : 'bg-white border-gray-100 text-gray-400'}`}>
+                                            : 'bg-white dark:bg-gray-800 border-gray-100 dark:border-gray-700 text-gray-400 dark:text-gray-500'}`}>
                                         {step.icon}
                                     </div>
-                                    <span className={`text-[9px] lg:text-xs font-medium whitespace-nowrap ${step.active ? 'text-gray-800' : 'text-gray-400'}`}>
+                                    <span className={`text-[9px] lg:text-xs font-medium whitespace-nowrap ${step.active ? 'text-gray-800 dark:text-gray-100' : 'text-gray-400 dark:text-gray-500'}`}>
                                         {step.label}
                                     </span>
                                 </div>
@@ -58,11 +58,11 @@ const ScanProgressCard: React.FC = () => {
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 lg:gap-8">
                         {details.map((detail, idx) => (
                             <div key={idx} className="flex flex-col gap-1 lg:gap-2">
-                                <span className="text-gray-400 text-[10px] font-bold uppercase tracking-wider">
+                                <span className="text-gray-400 dark:text-gray-500 text-[10px] font-bold uppercase tracking-wider">
                                     {detail.label}
                                 </span>
                                 <div className="flex items-center gap-2">
-                                    <span className="text-sm font-bold text-gray-800">
+                                    <span className="text-sm font-bold text-gray-800 dark:text-gray-200">
                                         {detail.label === 'Checklists' ? (
                                             <span className="text-[#00d2b4]">{detail.value}</span>
                                         ) : detail.value}

@@ -15,13 +15,13 @@ const ScanFooter: React.FC = () => {
     ];
 
     return (
-        <div className="flex flex-col sm:flex-row items-center justify-between px-4 lg:px-6 py-3 bg-white border border-gray-50 shadow-sm rounded-md shrink-0 gap-4 sm:gap-0">
+        <div className="flex flex-col sm:flex-row items-center justify-between px-4 lg:px-6 py-3 bg-white dark:bg-gray-900 border border-gray-50 dark:border-gray-800 shadow-sm rounded-md shrink-0 gap-4 sm:gap-0 transition-colors duration-300">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-4 lg:gap-8">
                 {stats.map((stat, idx) => (
                     <div key={idx} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-gray-300" />
-                        <span className="text-[10px] font-medium text-gray-400 uppercase tracking-widest">{stat.label}:</span>
-                        <span className="text-[10px] font-bold text-gray-800">{stat.value}</span>
+                        <div className="w-1.5 h-1.5 rounded-full bg-gray-300 dark:bg-gray-700" />
+                        <span className="text-[10px] font-medium text-gray-400 dark:text-gray-500 uppercase tracking-widest">{stat.label}:</span>
+                        <span className="text-[10px] font-bold text-gray-800 dark:text-gray-200">{stat.value}</span>
                     </div>
                 ))}
             </div>
@@ -30,7 +30,7 @@ const ScanFooter: React.FC = () => {
                 {severities.map((sev, idx) => (
                     <div key={idx} className="flex items-center gap-2">
                         <span className={`text-[10px] font-bold uppercase tracking-widest ${sev.color}`}>{sev.label}:</span>
-                        <span className="text-[10px] font-bold text-gray-800">{sev.value}</span>
+                        <span className="text-[10px] font-bold text-gray-800 dark:text-gray-200">{sev.value}</span>
                     </div>
                 ))}
             </div>

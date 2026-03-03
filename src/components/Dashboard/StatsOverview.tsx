@@ -22,15 +22,15 @@ const SeverityCard: React.FC<SeverityCardProps> = ({
     trendColor
 }) => {
     return (
-        <div className={`bg-white px-5 py-4 flex flex-col gap-3`}>
+        <div className="bg-white dark:bg-gray-900 px-5 py-4 flex flex-col gap-3 transition-colors duration-300">
             <div className="flex justify-between items-center">
-                <span className="text-gray-400 text-sm font-medium">{label}</span>
+                <span className="text-gray-400 dark:text-gray-500 text-sm font-medium">{label}</span>
                 <div className={`p-2 rounded-xl ${iconBgColor}`}>
                     {icon}
                 </div>
             </div>
             <div className="flex flex-row items-baseline gap-2 mt-1">
-                <span className="text-4xl font-bold text-gray-800 leading-none tracking-tight">{count}</span>
+                <span className="text-4xl font-bold text-gray-800 dark:text-gray-100 leading-none tracking-tight">{count}</span>
                 <div className={`flex items-center gap-1 text-[11px] font-bold ${trendColor}`}>
                     {trendType === 'up' ? <ArrowUp size={12} strokeWidth={3} /> : <ArrowDown size={12} strokeWidth={3} />}
                     <span>{trend}</span>
@@ -53,28 +53,29 @@ const StatsOverview: React.FC = () => {
     return (
         <div className="flex flex-col w-full">
             {/* Top Banner Stats */}
-            <div className="flex items-center justify-between   border border-gray-50 overflow-x-auto whitespace-nowrap scrollbar-hide">
+            <div className="flex items-center justify-between border border-gray-50 dark:border-gray-800 bg-white dark:bg-gray-900 px-6 py-2 overflow-x-auto whitespace-nowrap scrollbar-hide transition-colors duration-300">
                 <div className="flex items-center gap-8">
                     {topStats.map((stat, index) => (
                         <React.Fragment key={stat.label}>
                             <div className="flex items-center gap-2">
-                                <span className="text-gray-400 text-xs font-medium">{stat.label}</span>
-                                <span className="text-gray-800 text-sm font-bold">{stat.value}</span>
+                                <span className="text-gray-400 dark:text-gray-500 text-xs font-medium">{stat.label}</span>
+                                <span className="text-gray-800 dark:text-gray-200 text-sm font-bold">{stat.value}</span>
                             </div>
                             {index < topStats.length - 1 && (
-                                <div className="h-4 w-[1.5px] bg-gray-100" />
+                                <div className="h-4 w-[1.5px] bg-gray-100 dark:bg-gray-800" />
                             )}
                         </React.Fragment>
                     ))}
                 </div>
-                <div className="flex items-center gap-2 text-gray-400 ml-8">
+                <div className="flex items-center gap-2 text-gray-400 dark:text-gray-500 ml-8">
                     <RotateCcw size={16} className="text-[#00d2b4]" />
                     <span className="text-xs font-medium">10 mins ago</span>
                 </div>
             </div>
 
             {/* Severity Cards */}
-            <div className="grid grid-cols-2 md:grid-cols-4 bg-white border-b border-gray-100">
+            <div className="grid grid-cols-2 md:grid-cols-4 bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800 divide-x divide-gray-100 dark:divide-gray-800 transition-colors duration-300">
+
                 <SeverityCard
                     label="Critical Severity"
                     count={86}

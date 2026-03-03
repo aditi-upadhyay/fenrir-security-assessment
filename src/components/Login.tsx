@@ -7,7 +7,6 @@ const Login: React.FC = () => {
     const navigate = useNavigate();
 
     const handleCreateAccount = () => {
-        console.log("Create account");
         navigate('/home');
     }
     return (
