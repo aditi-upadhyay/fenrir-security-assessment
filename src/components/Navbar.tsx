@@ -3,7 +3,7 @@ import { Home } from 'lucide-react';
 
 const Navbar: React.FC = () => {
     return (
-        <nav className="flex items-center justify-between px-8 py-4 bg-white border-b border-gray-100 shrink-0">
+        <nav className="flex items-center justify-between px-8 py-2 bg-white border-b border-gray-100 shrink-0">
             <div className="flex items-center gap-3">
                 <span className="text-sm font-bold text-gray-800">Scan</span>
                 <div className="flex items-center gap-2 text-gray-400">

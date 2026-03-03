@@ -15,31 +15,31 @@ export const SIDEBAR_ITEMS: SidebarItemType[] = [
   },
   {
     label: "Projects",
-    path: "/scans",
+    path: "/projects",
     icon: <FileText size={20} />,
   },
   {
-    label: "Scan",
-    path: "/security",
+    label: "Scans",
+    path: "/scans",
     icon: <Shield size={20} />,
   },
   {
     label: "Schedule",
-    path: "/settings",
+    path: "/schedule",
     icon: <Settings size={20} />,
   },
   {
     label: "Notifications",
-    path: "/settings",
+    path: "/notifications",
     icon: <Settings size={20} />,
   },
   {
     label: "Settings",
     path: "/settings",
     icon: <Settings size={20} />,
-  },{
+  }, {
     label: "Support",
-    path: "/settings",
+    path: "/support",
     icon: <Settings size={20} />,
   },
 ];

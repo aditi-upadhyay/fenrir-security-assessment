@@ -10,7 +10,7 @@ const Layout: React.FC = () => {
 
             <main className="flex-1 h-screen overflow-hidden flex flex-col">
                 <Navbar />
-                <div className="flex-1 overflow-y-auto p-8">
+                <div className="flex-1 overflow-y-auto p-4">
                     <Outlet />
                 </div>
             </main>
